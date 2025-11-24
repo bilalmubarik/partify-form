@@ -191,6 +191,15 @@ function setupEventListeners() {
     viewProductBtn.addEventListener('click', navigateToProduct);
 }
 
+function openNextDropdown(selectElement) {
+    setTimeout(() => {
+        selectElement.focus();
+        if (selectElement.showPicker) {
+            selectElement.showPicker();
+        }
+    }, 100);
+}
+
 function handleYearChange() {
     const selectedYear = parseInt(yearSelect.value);
     
@@ -208,6 +217,7 @@ function handleYearChange() {
         
         populateDropdown(makeSelect, makes);
         makeSelect.disabled = false;
+        openNextDropdown(makeSelect);
     } else {
         makeSelect.disabled = true;
     }
@@ -235,6 +245,7 @@ function handleMakeChange() {
         
         populateDropdown(modelSelect, models);
         modelSelect.disabled = false;
+        openNextDropdown(modelSelect);
     } else {
         modelSelect.disabled = true;
     }
@@ -261,6 +272,7 @@ function handleModelChange() {
         
         populateDropdown(productTypeSelect, productTypes);
         productTypeSelect.disabled = false;
+        openNextDropdown(productTypeSelect);
     } else {
         productTypeSelect.disabled = true;
     }
